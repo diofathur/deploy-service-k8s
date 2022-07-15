@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: webservice
+  name: webservice-quiz2
   labels:
-    app: webserver
+    app: webserver-quiz2
 spec:
   type: NodePort
   ports:
@@ -11,24 +11,24 @@ spec:
     nodePort: 31337
     protocol: TCP
   selector:
-    app: webserver
+    app: webserver-quiz2
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webserver
+  name: webserver-quiz2
 spec:
   selector:
     matchLabels:
-      app: webserver
+      app: webserver-quiz2
   replicas: 2
   template:
     metadata:
       labels:
-        app: webserver
+        app: webserver-quiz2
     spec:
       containers:
-      - name: webserver
+      - name: webserver-quiz2
         image: httpd:alpine
         ports:
         - containerPort: 80
